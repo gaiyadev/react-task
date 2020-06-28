@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './components/Person/Person';
 import UserOutput from './components/UserOutput/UserOutput';
+import UerInput from './components/UserInput/Userinput';
 
 class App extends Component {
 
@@ -48,7 +49,13 @@ class App extends Component {
     })
   }
 
-
+  changeUsernameHandler = (event) => {
+    this.setState({
+      info: [
+        { username: event.target.value }
+      ]
+    });
+  }
   render() {
 
     return (
@@ -74,9 +81,12 @@ class App extends Component {
 
         {/* Beginning of the assignment */}
         <div className="hw">
+          <UerInput
+            currentValue={this.state.info[0].username}
+            changed={this.changeUsernameHandler} />
           <UserOutput username={this.state.info[0].username} />
-          <UserOutput />
-          <UserOutput />
+          <UserOutput username={this.state.info[0].username} />
+          <UserOutput username={this.state.info[0].username} />
         </div>
       </div>
     );
